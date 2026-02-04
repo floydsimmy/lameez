@@ -1,0 +1,11 @@
+Place your cat's photo here!
+
+Instructions:
+1. Add your photo of Lupsy to this /public folder
+2. Name it: lupsy.jpg (or lupsy.png, lupsy.webp, etc.)
+3. The website will automatically display it
+
+If you use a different filename, update the path in:
+/lib/content.ts (look for the lupsy.imagePath property)
+
+Supported formats: JPG, PNG, WebP, AVIF
