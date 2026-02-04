@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 interface AnimatedCardProps {
   children: ReactNode
@@ -16,17 +16,27 @@ export default function AnimatedCard({
   delay = 0,
   gradient = 'from-white/80 to-rose-50/80'
 }: AnimatedCardProps) {
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
+
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  }, [])
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay, ease: 'easeOut' }}
-      whileHover={{
-        scale: 1.03,
-        y: -5,
-        transition: { duration: 0.2 }
-      }}
+      whileHover={
+        isTouchDevice
+          ? undefined
+          : {
+              scale: 1.03,
+              y: -5,
+              transition: { duration: 0.2 }
+            }
+      }
       className={`
         relative p-6 md:p-8 rounded-2xl
         bg-gradient-to-br ${gradient}
@@ -34,7 +44,7 @@ export default function AnimatedCard({
         shadow-lg shadow-rose-200/50
         border border-white/60
         transition-shadow duration-300
-        hover:shadow-xl hover:shadow-rose-300/50
+        md:hover:shadow-xl md:hover:shadow-rose-300/50
         ${className}
       `}
     >

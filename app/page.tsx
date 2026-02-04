@@ -14,13 +14,13 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false)
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden">
+    <main className="relative min-h-screen overflow-x-hidden touch-pan-y">
       <PetalsBackground />
 
       <RevealIntro onComplete={() => setShowContent(true)} />
 
       {showContent && (
-        <div className="relative z-10">
+        <div className="relative z-10 touch-pan-y">
           <Hero />
           <AdoreSection />
           <FavoritesSection />

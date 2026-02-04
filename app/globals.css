@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     @apply bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 text-gray-900;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    touch-action: pan-y pinch-zoom;
+    overflow-x: hidden;
   }
 
   /* Respect prefers-reduced-motion */
