@@ -41,17 +41,21 @@ export default function Hero() {
 
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="mt-12 text-6xl"
           animate={{
+            opacity: 1,
+            scale: 1,
             y: [0, -10, 0],
           }}
           transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            opacity: { duration: 0.6, delay: 1 },
+            scale: { duration: 0.6, delay: 1 },
+            y: {
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            },
           }}
+          className="mt-12 text-6xl"
         >
           💕
         </motion.div>
